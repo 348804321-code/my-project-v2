@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="听音小黑屋">
+<meta name="description" content="钢琴听音训练 - 用耳朵感受音乐的灵魂">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230b1020' width='100' height='100'/><text x='50' y='75' font-size='60' text-anchor='middle'>🎹</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%230b1020' width='180' height='180' rx='40'/><text x='90' y='130' font-size='100' text-anchor='middle'>🎹</text></svg>">
+
+<title>老刘的听音小黑屋</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="flash"></div>
+
+<div id="app-container">
+
+<!-- 标题页 -->
+<div id="title-screen" class="screen active">
+  <div class="title-content">
+    <h1 class="main-title">老刘的听音小黑屋</h1>
+    <p class="subtitle">用你的耳朵，感受音乐的灵魂</p>
+    <button class="nav-btn" onclick="transitionTo('guide')">开始学习</button>
+  </div>
+</div>
+
+<!-- 指引页 -->
+<div id="guide-screen" class="screen">
+  <div class="guide-content">
+    <h1>钢琴键盘导览</h1>
+    <p class="guide-text">识别这些钢琴音符，开启挑战之旅</p>
+    
+    <div class="keyboard-container">
+      <div class="keyboard">
+        <div class="key white" data-note="F3"><span class="label">F3</span></div>
+        <div class="key black" data-note="F#3"><span class="label">F#3</span></div>
+        <div class="key white" data-note="G3"><span class="label">G3</span></div>
+        <div class="key black" data-note="G#3"><span class="label">G#3</span></div>
+        <div class="key white" data-note="A3"><span class="label">A3</span></div>
+        <div class="key black" data-note="A#3"><span class="label">A#3</span></div>
+        <div class="key white" data-note="B3"><span class="label">B3</span></div>
+        <div class="key white" data-note="C4"><span class="label">C4</span></div>
+        <div class="key black" data-note="C#4"><span class="label">C#4</span></div>
+        <div class="key white" data-note="D4"><span class="label">D4</span></div>
+        <div class="key black" data-note="D#4"><span class="label">D#4</span></div>
+        <div class="key white" data-note="E4"><span class="label">E4</span></div>
+        <div class="key white" data-note="F4"><span class="label">F4</span></div>
+        <div class="key black" data-note="F#4"><span class="label">F#4</span></div>
+        <div class="key white" data-note="G4"><span class="label">G4</span></div>
+        <div class="key black" data-note="G#4"><span class="label">G#4</span></div>
+        <div class="key white" data-note="A4"><span class="label standard">A4</span></div>
+        <div class="key black" data-note="A#4"><span class="label">A#4</span></div>
+        <div class="key white" data-note="B4"><span class="label">B4</span></div>
+        <div class="key white" data-note="C5"><span class="label">C5</span></div>
+        <div class="key black" data-note="C#5"><span class="label">C#5</span></div>
+        <div class="key white" data-note="D5"><span class="label">D5</span></div>
+        <div class="key black" data-note="D#5"><span class="label">D#5</span></div>
+        <div class="key white" data-note="E5"><span class="label">E5</span></div>
+        <div class="key white" data-note="F5"><span class="label">F5</span></div>
+        <div class="key black" data-note="F#5"><span class="label">F#5</span></div>
+        <div class="key white" data-note="G5"><span class="label">G5</span></div>
+        <div class="key black" data-note="G#5"><span class="label">G#5</span></div>
+        <div class="key white" data-note="A5"><span class="label">A5</span></div>
+      </div>
+    </div>
+    <p class="guide-note">红色标注为标准音 A4（440Hz）。</p>
+    <div class="guide-buttons">
+      <button class="nav-btn secondary" onclick="transitionTo('title')">返回</button>
+      <button class="nav-btn" onclick="transitionTo('game')">开始闯关</button>
+    </div>
+  </div>
+</div>
+
+<!-- 游戏页 -->
+<div id="game-screen" class="screen">
+  <div class="app">
+
+<header>
+
+<div class="title">
+老刘的听音小黑屋
+</div>
+
+<div class="top-right">
+
+<button id="referenceBtn">
+开始闯关
+</button>
+
+</div>
+
+</header>
+
+<section class="status">
+
+<div>
+题目：
+<span id="level">0 / 10</span>
+</div>
+
+<div>
+得分：
+<span id="score">0</span>
+</div>
+
+<div>
+倒计时：
+<span id="countdown">8</span>s
+</div>
+
+<div id="combo">
+连击 0
+</div>
+
+</section>
+
+<section class="record-area">
+
+<div id="record">
+
+<div class="vinyl-record">
+  <div class="vinyl-center"></div>
+  <div class="vinyl-grooves"></div>
+</div>
+
+<div class="record-text">
+开始闯关
+</div>
+
+</div>
+
+</section>
+
+<section id="options">
+
+</section>
+
+<section>
+
+<div id="message"></div>
+
+</section>
+
+<section>
+
+<div id="hearts">
+❤️❤️❤️❤️❤️
+</div>
+
+</section>
+
+  </div>
+</div>
+
+<!-- 结算页 -->
+<div id="game-over-screen" class="screen"></div>
+
+</div>
+
+<script src="js/app.js"></script>
+
+<script>
+// 注册 Service Worker（PWA 离线支持）
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(reg => console.log('Service Worker 注册成功'))
+    .catch(err => console.log('Service Worker 注册失败：', err));
+}
+</script>
+
+</body>
+</html>

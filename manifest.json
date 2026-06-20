@@ -1,0 +1,62 @@
+{
+  "name": "老刘的听音小黑屋",
+  "short_name": "听音小黑屋",
+  "description": "钢琴听音训练 - 用耳朵感受音乐的灵魂",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0b1020",
+  "background_color": "#0b1020",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%230b1020' width='192' height='192'/><text x='96' y='120' font-size='80' font-weight='bold' fill='%238c6bff' text-anchor='middle' font-family='Arial'>🎹</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%230b1020' width='512' height='512'/><text x='256' y='350' font-size='200' font-weight='bold' fill='%238c6bff' text-anchor='middle' font-family='Arial'>🎹</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "music"],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'><rect fill='%230b1020' width='540' height='720'/><text x='270' y='100' font-size='40' fill='%23f7e8c5' text-anchor='middle'>老刘的听音小黑屋</text></svg>",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "开始学习",
+      "short_name": "学习",
+      "description": "进入钢琴键盘导览",
+      "url": "/?mode=guide",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%235dbbf2' width='96' height='96' rx='20'/><text x='48' y='60' font-size='40' text-anchor='middle'>📚</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "开始闯关",
+      "short_name": "闯关",
+      "description": "开始答题挑战",
+      "url": "/?mode=game",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%238c6bff' width='96' height='96' rx='20'/><text x='48' y='60' font-size='40' text-anchor='middle'>🎮</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}
